@@ -1,5 +1,5 @@
 import { Box, Button, Grid, GridItem, Input, Text } from "@chakra-ui/react";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const PropertyForm = ({ property, onSave }) => {
   const [title, setTitle] = useState(property?.title || "");
@@ -11,7 +11,7 @@ const PropertyForm = ({ property, onSave }) => {
   );
   const [nearby, setNearby] = useState(property?.nearby || "");
   const [price, setPrice] = useState(property?.price || "");
-  const [imageFile, setImageFile] = useState();
+  // const [imageFile, setImageFile] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();

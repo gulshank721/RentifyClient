@@ -3,7 +3,6 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
   Button,
@@ -22,7 +21,7 @@ export const PropertyFormModal = ({
   isOpen,
   onClose,
   property,
-  fetchProperties,
+  // fetchProperties,
 }) => {
   const [title, setTitle] = useState(property?.title || "");
   const [place, setPlace] = useState(property?.place || "");

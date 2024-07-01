@@ -1,28 +1,20 @@
 import {
   Badge,
   Box,
-  Button,
-  ButtonGroup,
-  Card,
-  CardBody,
-  CardFooter,
-  Divider,
   Flex,
-  Heading,
   Image,
-  Stack,
   Text,
 } from "@chakra-ui/react";
 
 import React, { useState } from "react";
-import { CiStar } from "react-icons/ci";
+
 import { FaStar } from "react-icons/fa6";
-import { SellerDetailsModal } from "./SellerDetailsModal";
+// import { SellerDetailsModal } from "./SellerDetailsModal";
 
 export const PropertyCard = ({ id, property }) => {
-  const [selectedProperty, setSelectedProperty] = useState();
-  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
-  const handlePropertyClick = () => {};
+  // const [selectedProperty, setSelectedProperty] = useState();
+  // const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+  // const handlePropertyClick = () => {};
 
   function getFormatedPrice(price) {
     const formattedPrice = new Intl.NumberFormat("en-IN", {

@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Property from "../components/Property";
+// import Property from "../components/Property";
 import { PropertyCard } from "../components/PropertyCard";
-import { Box, Container, Grid, GridItem, Text } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Text } from "@chakra-ui/react";
 
 const HomePage = () => {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const Base_Url = process.env.REACT_APP_BASE_URL;
-  const Local_url = process.env.REACT_APP_LOCAL_URL;
+  // const Local_url = process.env.REACT_APP_LOCAL_URL;
 
   useEffect(() => {
     const fetchProperties = async () => {
       setLoading(true);
       try {
-        const { data } = await axios.get(Local_url + "/api/properties");
+        const { data } = await axios.get(Base_Url + "/api/properties");
         setProperties(data);
         setLoading(false);
       } catch (error) {
@@ -25,7 +25,7 @@ const HomePage = () => {
     };
 
     fetchProperties();
-  }, []);
+  }, [Base_Url]);
 
   if (loading) return <div>Loading...</div>;
 

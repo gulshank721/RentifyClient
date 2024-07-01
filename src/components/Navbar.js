@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Flex,
   Icon,
   IconButton,
@@ -12,24 +11,17 @@ import {
   MenuList,
   Text,
 } from "@chakra-ui/react";
-import React, { useContext, useState } from "react";
+import React, { useContext} from "react";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import { CgProfile } from "react-icons/cg";
-import { MdLogin, MdLogout, MdOutlineAccountCircle } from "react-icons/md";
+import { MdLogin, MdOutlineAccountCircle } from "react-icons/md";
 import { FaUserPlus } from "react-icons/fa6";
 import { IoMdLogOut } from "react-icons/io";
 
 export const Navbar = () => {
   // const [selectedNav, setSelectedNav] = useState();
   const { user, logout } = useContext(AuthContext);
-
-  const navList = [
-    // { name: "Home", path: "/home" },
-    { name: "Login", path: "/login" },
-    { name: "Register", path: "/register" },
-  ];
-
   return (
     <Box>
       <Flex

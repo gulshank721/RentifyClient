@@ -5,7 +5,6 @@ import PropertyForm from "../components/PropertyForm";
 import {
   Box,
   Button,
-  Divider,
   Editable,
   Flex,
   Tab,
@@ -14,7 +13,7 @@ import {
   TabPanels,
   Tabs,
   Text,
-  useStepContext,
+  // useStepContext,
 } from "@chakra-ui/react";
 import { PropertyFormModal } from "../components/PropertyFormModal";
 
@@ -182,7 +181,7 @@ const SellerDashboardPage = () => {
         </TabPanels>
       </Tabs>
       
-      {/* {error && <div>Error: {error}</div>} */}
+      {error && <div>Error: {error}</div>}
 
       {selectedProperty && Editable && (
         <PropertyFormModal
