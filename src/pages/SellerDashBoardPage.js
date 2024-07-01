@@ -24,7 +24,7 @@ const SellerDashboardPage = () => {
   const [error, setError] = useState("");
   const { user } = useContext(AuthContext);
   const Base_Url = process.env.REACT_APP_BASE_URL;
-  const Local_url = process.env.REACT_APP_LOCAL_URL;
+  // const Local_url = process.env.REACT_APP_LOCAL_URL;
 
   const handleEditClick = () => {
     setIsEditOpen(true);
@@ -33,7 +33,7 @@ const SellerDashboardPage = () => {
   const fetchProperties = async () => {
     try {
       const { data } = await axios.get(
-        Local_url + "/api/properties/myproperties",
+        Base_Url + "/api/properties/myproperties",
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
