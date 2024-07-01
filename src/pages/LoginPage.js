@@ -96,10 +96,11 @@ const LoginPage = () => {
               required
             />
           </FormControl>
-          <Text textAlign={'end'}>
-            Don't have an account? 
-            <Link to={"/register"} ><span> <Text color={'blue'}>Sign up</Text> </span> </Link>
-             
+          <Text textAlign={"end"}>
+            Don't have an account?
+            <Link to={"/register"} >
+              <Text color={"blue"}>Sign up</Text>{" "}
+            </Link>
           </Text>
           <Button isLoading={loading} colorScheme="blue" type="submit">
             Login
