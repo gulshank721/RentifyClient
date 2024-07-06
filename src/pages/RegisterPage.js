@@ -37,10 +37,11 @@ const RegisterPage = () => {
             isClosable: true,
           })
           console.log("success called");
+          navigate("/");
     } catch (error) {
         toast({
-            title: 'Something Went Wrong',
-            description: error.message,
+            title: error.message,
+            description: "Sign Up Failed",
             status: 'error',
             duration: 4000,
             isClosable: true,
@@ -50,7 +51,7 @@ const RegisterPage = () => {
       setLoading(false)
     }
     
-    navigate("/");
+   
   };
 
   return (
