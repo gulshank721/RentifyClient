@@ -36,10 +36,10 @@ const SearchBar = () => {
             //   setLoading(false);
             }
           };
-          fetchProperties();
-
+          if(debouncedValue)fetchProperties();
 
     },[debouncedValue, Base_Url])
+
   return (
     <InputGroup display={"flex"} alignItems={'center'}>
       <InputLeftElement mt={1} pointerEvents="none" color="gray.300" fontSize="1.2em">
