@@ -27,8 +27,14 @@ const SearchBar = () => {
 
         const fetchProperties = async () => {
             // setLoading(true);
+            let url ="";
+            if(debouncedValue){
+              url = `${Base_Url}/api/properties?searchArea=${debouncedValue}`;
+            }else{
+              url = `${Base_Url}/api/properties`; 
+            }
             try {
-              const { data } = await axios.get(`${Base_Url}/api/properties?searchArea=${debouncedValue}`);
+              const { data } = await axios.get(url);
               setProperties(data);
             //   setLoading(false);
             } catch (error) {
@@ -36,7 +42,7 @@ const SearchBar = () => {
             //   setLoading(false);
             }
           };
-          if(debouncedValue)fetchProperties();
+          fetchProperties();
 
     },[debouncedValue, Base_Url])
 
