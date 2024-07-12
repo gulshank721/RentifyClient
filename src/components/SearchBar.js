@@ -3,6 +3,7 @@ import {
   InputGroup,
   InputLeftElement,
   InputRightElement,
+  Spinner,
 } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useCallback, useEffect, useState } from "react";
@@ -13,6 +14,7 @@ import { usePropertyContext } from "../context/propertiesContext";
 const SearchBar = () => {
     const {setProperties, fetchProperties} = usePropertyContext();
     const [inputValue, setInputValue] = useState();
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleInputChange =(e)=>{
         console.log(e.target.value);
@@ -30,7 +32,7 @@ const SearchBar = () => {
     useEffect(()=>{
 
         const fetchProperties = async () => {
-            // setLoading(true);
+            setIsLoading(true);
             let url ="";
             if(debouncedValue){
               url = `${Base_Url}/api/properties?searchArea=${debouncedValue}`;
@@ -44,7 +46,9 @@ const SearchBar = () => {
             //   setLoading(false);
             } catch (error) {
             //   setError(error.message || "An error occurred");
-            //   setLoading(false);
+              
+            }finally{
+              setIsLoading(false);
             }
           };
           fetchProperties(inputValue);
@@ -57,8 +61,9 @@ const SearchBar = () => {
         <FiSearch size={22} />
       </InputLeftElement>
       <Input size="lg" value={inputValue} onChange={handleInputChange} rounded={"full"} placeholder="Search Area" />
+    
       <InputRightElement _hover={{bgColor:"blue.900"}}  bgColor={"blue.700"} p={2} m={1} me={2} rounded={"full"}>
-        <FiSearch size={20} color={"white"} />
+        {isLoading?<Spinner color="white"/>:<FiSearch size={20} color={"white"} />}
       </InputRightElement>
     </InputGroup>
   );
