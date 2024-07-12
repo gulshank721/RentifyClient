@@ -18,7 +18,7 @@ import SellerDashboardPage from "./pages/SellerDashBoardPage";
 import ProfilePage from "./pages/ProfilePage";
 import { PropertyProvider } from "./context/propertiesContext";
 
-const ProtectedRoute = ({ children }) => {
+const ProtectedRoute = ({children}) => {
   const auth = useContext(AuthContext);
   console.log(auth);
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ const ProtectedRoute = ({ children }) => {
   //   );
   // }
 
-  return !auth.user ? <Navigate to="/login" /> : { children };
+  return !auth.user ? <Navigate to="/login" /> : children ;
 };
 
 // export default ProtectedComponent;

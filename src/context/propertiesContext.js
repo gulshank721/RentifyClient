@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
 
 const PropertyContext = createContext();
 
@@ -7,23 +7,34 @@ const PropertyProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const Base_Url = process.env.REACT_APP_BASE_URL;
   // Function to fetch properties based on search area
-  const fetchProperties = async (searchArea) => {
+  const fetchProperties = useCallback( async (query) => {
     setLoading(true);
     setError(null);
+    let url = Base_Url+ '/api/properties';
+    if (query) {
+      url += `?searchArea=${query}`;
+    }
     try {
-      const response = await fetch(`/api/properties?searchArea=${searchArea}`);
+      const response = await fetch(url);
       const data = await response.json();
+      console.log(data);
       setProperties(data);
     } catch (err) {
       setError(err.message);
     } finally {
       setLoading(false);
     }
-  };
+  }, []) 
+
+
+  // useEffect(()=>{
+  //   fetchProperties();
+  // },[])
 
   return (
-    <PropertyContext.Provider value={{ properties, loading, error, fetchProperties }}>
+    <PropertyContext.Provider value={{ properties, loading, error, fetchProperties, setProperties }}>
       {children}
     </PropertyContext.Provider>
   );

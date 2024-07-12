@@ -5,15 +5,14 @@ import {
   InputRightElement,
 } from "@chakra-ui/react";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import useDebounce from "../hooks/useDebounce";
 import { usePropertyContext } from "../context/propertiesContext";
 
 const SearchBar = () => {
-    const {setProperties} = usePropertyContext();
+    const {setProperties, fetchProperties} = usePropertyContext();
     const [inputValue, setInputValue] = useState();
-
 
     const handleInputChange =(e)=>{
         console.log(e.target.value);
@@ -21,6 +20,11 @@ const SearchBar = () => {
     }
 
     const debouncedValue = useDebounce(inputValue, 500);
+
+    // useEffect(() => {
+    //   console.log("rerendering");
+    //   fetchProperties(debouncedValue);
+    // }, [debouncedValue]);
 
     const Base_Url  = process.env.REACT_APP_BASE_URL;
     useEffect(()=>{
@@ -35,6 +39,7 @@ const SearchBar = () => {
             }
             try {
               const { data } = await axios.get(url);
+              console.log(data);
               setProperties(data);
             //   setLoading(false);
             } catch (error) {
@@ -42,9 +47,9 @@ const SearchBar = () => {
             //   setLoading(false);
             }
           };
-          fetchProperties();
+          fetchProperties(inputValue);
 
-    },[debouncedValue, Base_Url])
+    },[debouncedValue, Base_Url ])
 
   return (
     <InputGroup display={"flex"} alignItems={'center'}>

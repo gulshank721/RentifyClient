@@ -24,7 +24,7 @@ export const Navbar = () => {
   // const [selectedNav, setSelectedNav] = useState();
   const { user, logout } = useContext(AuthContext);
   return (
-    <Box h={'full'} display={'flex'} flexDirection={'column'} >
+    <Box h={'100vh'} display={'flex'} flexDirection={'column'} >
       <Flex
         color={"white"}
         alignItems={"center"}

@@ -16,7 +16,7 @@ const HomePage = () => {
 
   if (loading)
     return (
-      <Center h={'full'}>
+      <Center h={"full"}>
         <Loader />
       </Center>
     );
@@ -24,37 +24,39 @@ const HomePage = () => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <Box w={"full"} mx={4}>
-      <Box p={2}>
-        <Text color={"gray"} as={"b"} fontSize={"large"}>
-          Available Properties
-        </Text>
-      </Box>
+    <Box overflowY={"auto"} h={"100%"} w={"full"} >
+      <Box w={"fit-content"} mx={"auto"}  >
+        <Box p={2}>
+          <Text color={"gray"} as={"b"} fontSize={"large"}>
+            Available Properties
+          </Text>
+        </Box>
 
-      <Box width={"60%"} mx={"auto"}>
-        <SearchBar/>
-      </Box>
+        <Box width={"60%"} mx={"auto"}>
+          <SearchBar />
+        </Box>
 
-      <Box p={4}>
-        <Grid
-          templateColumns={{
-            base: "repeat(1, 1fr)",
-            md: "repeat(2, 1fr)",
-            lg: "repeat(3, 1fr)",
-          }}
-          gap={2}
-        >
-          {properties.length > 0 ? (
-            properties.map((property) => (
-              <GridItem key={property._id}>
-                {/* <PropertyCard id={property._id} property={property} /> */}
-                <AirbnbCard id={property._id} property={property} />
-              </GridItem>
-            ))
-          ) : (
-            <p>No Properties found</p>
-          )}
-        </Grid>
+        <Box p={4}>
+          <Grid
+            templateColumns={{
+              base: "repeat(1, 1fr)",
+              md: "repeat(2, 1fr)",
+              lg: "repeat(3, 1fr)",
+            }}
+            gap={2}
+          >
+            {properties.length > 0 ? (
+              properties.map((property) => (
+                <GridItem key={property._id}>
+                  {/* <PropertyCard id={property._id} property={property} /> */}
+                  <AirbnbCard id={property._id} property={property} />
+                </GridItem>
+              ))
+            ) : (
+              <p>No Properties found</p>
+            )}
+          </Grid>
+        </Box>
       </Box>
     </Box>
   );

@@ -31,7 +31,7 @@ const AirbnbCard = ({ id, property : propertyDetails}) => {
       };
   
       return (
-        <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
+        <Box maxW="sm" borderWidth="1px" borderRadius="lg" bgColor={"white"} overflow="hidden">
           <Image src={property.imageUrl} alt={property.imageAlt} />
   
           <Box p="6">
